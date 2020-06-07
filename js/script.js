@@ -8,7 +8,7 @@ project 1 - A Random Quote Generator
 // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /***
- * `quotes` array
+ * @constant`quotes` array
  ***/
 const quotes = [
   {
@@ -40,19 +40,20 @@ const quotes = [
   },
 ];
 /**
- * store interval when next quote is rendered
+ * @var `interval` - To set number of seconds, to display next quote;
  */
-let interval = 8000;
+let interval;
 /***
- * `getRandomQuote` function
- *  return random quote from quotes array
+ * @function `getRandomQuote`;
+ *  @return Return random quote from quotes array;
  ***/
 const getRandomQuote = () => {
   return quotes[Math.floor(Math.random() * quotes.length)];
 };
 
 /**
- * function to generate random body backgroundColor
+ * @constant rgb1, rgb2, rgb3 - Store random number between 0 and 255;
+ * @function To generate random body(DOM - element) background color;
  */
 const changeBackground = () => {
   const rgb1 = Math.floor(Math.random() * 255);
@@ -65,7 +66,13 @@ const changeBackground = () => {
 };
 
 /***
- * `printQuote` function
+ *
+ * @function `printQuote` - Reder random quote;
+ * @var `interval` - Sets seconds to automatically display next quote;
+ * @function `changeBackground` - Call to change background when every next quote is redered;
+ * @constant `quote` - Holds returned random quote object from  @function `getRandomQuote`;
+ * @var `html` - To store random quote HTML structure up on if statement;
+ * @constant `container` - To store HTML element by CSS class`.container`;
  ***/
 const printQuote = () => {
   interval = 8000;
@@ -86,11 +93,13 @@ const printQuote = () => {
   }
   container.innerHTML = html;
 };
-// call printQuote function
+/**
+ * Call @function `printQuote`
+ */
 printQuote();
 
 /**
- * Automatically switch quote
+ * @function Automatically switch quote
  */
 setInterval(function () {
   printQuote();
